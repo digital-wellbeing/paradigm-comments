@@ -1,0 +1,417 @@
+---
+title: Three objections to a novel person-specific paradigm in social media effects research
+shorttitle        : Three objections
+leftheader        : Three objections
+author: 
+  - name          : Matti Vuorre
+    affiliation   : 1
+    corresponding : yes    # Define only one corresponding author
+    address       : Oxford Internet Institute, University of Oxford
+    email         : matti.vuorre@oii.ox.ac.uk
+    role:
+      - Conceptualization
+      - Formal analysis
+      - Software
+      - Visualization
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
+  - name          : Niklas Johannes
+    affiliation   : 1
+    address       : Oxford Internet Institute, University of Oxford
+    email         : niklas.johannes@oii.ox.ac.uk
+    role:
+      - Conceptualization
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
+  - name: Andrew K. Przybylski
+    affiliation: 1
+    address       : Oxford Internet Institute, University of Oxford
+    email         : andy.przybylski@oii.ox.ac.uk
+    role:
+      - Writing - Original Draft Preparation
+      - Writing - Review & Editing
+affiliation:
+  - id            : 1
+    institution   : Oxford Internet Institute, University of Oxford
+authornote: |
+  A non-peer reviewed pre-print of this work is available at <psyarxiv>.
+  All code supporting this manuscript is available at <github>.
+abstract: |
+  The study of social media effects on psychological well-being has reached an impasse: Popular commentators "know" that social media are bad for you but research results are mixed and have had little practical impact. In response, one research group aims to move beyond studying population averages to find effects that are specific to individuals.
+  
+  Here, we outline three objections to that research programme. On a methodological level, the key empirical results of this programme---proportions of the population of individuals with negative, null, and positive social media effects---are inappropriately estimated and reported. On a theoretical level, these results do little to advance our understanding of social media and its psychological implications. On a  paradigmatic level, this "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] does not make inferences about individuals and therefore does not deliver what it claims. 
+  
+  We fear that this research programme is contributing to confusing messaging to both societal stakeholders and scientists. We hope that describing these objections will prompt the field to work together in adopting better practices to ultimately develop a better understanding of well-being in the digital age.
+keywords          : social media, media effects, well-being, variation, paradigm
+wordcount         : 3201
+bibliography      : person-specific-paradigm.bib
+floatsintext      : yes
+linenumbers       : no
+draft             : no
+mask              : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+header-includes:
+  - |
+    \makeatletter
+    \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+      {-1em}%
+      {\normalfont\normalsize\bfseries\typesectitle}}
+    
+    \renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+      {-\z@\relax}%
+      {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+    \makeatother
+
+csl               : "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
+documentclass     : "apa7"
+classoption       : jou
+output: 
+  papaja::apa6_pdf:
+    number_sections: true
+  papaja::apa6_docx: 
+    number_sections: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+library(papaja)
+library(janitor)
+library(scales)
+library(haven)
+library(here)
+library(knitr)
+library(ggstance)
+library(tidybayes)
+library(brms)
+library(tidyverse)
+dir.create("models")
+opts_chunk$set(
+  eval = TRUE,
+  cache = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+theme_set(
+  theme_linedraw(base_size = 11) +
+    theme(panel.grid = element_blank())
+)
+```
+
+Empirically studied associations between social media use and psychological well-being are small, variable from one sample to another and between methodological approaches, have little bearing on causality, and have not led to actionable evidence for stakeholders [@appelAreSocialMedia2020; @bestOnlineCommunicationSocial2014; @dickson2018screen; @jensenYoungAdolescentsDigital2019; @odgersAnnualResearchReview2020; @ophirNewMediaScreenTime2020; @orbenAssociationAdolescentWellbeing2019]. In response, one group in particular is moving attention from negligible average associations to individual social media users:
+
+>"[A]verage associations are derived from heterogeneous populations of SM [social media] users who differ in how they select and respond to SM, a finding that has repeatedly been confirmed in qualitative studies. To truly understand the effects of SMU, researchers need to take the next step, that is, adopting a “causal effect heterogeneity” approach, which enables them to better understand why and how individuals differ in their responses to SMU." [@valkenburgSocialMediaUse2022a, p.5]
+
+Because aggregate statistics purportedly cannot adequately describe individuals, this group hopes that others will follow them in what they alternatively call a "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] or a "causal effect heterogeneity paradigm" [@valkenburgSocialMediaUse2022a, p.5]. We previously outlined concerns with this body of work, including that it conflates studying heterogeneity with idiographic research [@johannesHowShouldWe2021a, see @valkenburgHowAssessVariation2022 for the authors' response]. Here, we focus on a pervasive methodological issue in that body of work that we did not previously address. Considering this issue in detail suggests three objections to the proposed research programme that, until adequately responded to, limit the usefulness of the programme and its outputs.
+
+# Methodological objection
+
+The main outcomes of the programme under question are "striking person-specific effects" [@valkenburgSocialMediaUse2022a, p.5]: Proportions of adolescents with negative, null, and positive associations between social media use and various well-being outcomes. We take these numerical results to be the key estimands because they are typically the numerical results reported in paper abstracts [e.g. @beyensSocialMediaUse2021; @valkenburgSocialMediaBrowsing2021]. Here, we suggest that those numbers are inappropriately calculated and interpreted. 
+
+In *The effect of social media on well‐being differs from adolescent to adolescent*, Beyens et al. [-@beyensEffectSocialMedia2020] quantified the person-to-person variability in associations between social media use and affective well-being. They reported that 
+
+>"the association between social media use and affective well‐being differs strongly across adolescents: While 44% did not feel better or worse after passive social media use, 46% felt better, and 10% felt worse." (p.1)
+
+To reach these numbers, the authors estimated a statistical model of 2,155 responses from 63 adolescents to "*How happy do you feel right now?*" on a scale from 1 (not at all) to 7 (completely). These responses were regressed on dichotomized (use vs. no use) and within-person centered self-reported active and passive social media use in the past hour (Model 1B in [@beyensEffectSocialMedia2020]). We write this model as
+
+\begin{align*}
+y_{ij} &\sim \operatorname{Normal}(\eta_{ij}, \sigma^2_y) \\
+\eta_{ij} &= \bar\beta_0 + \beta_{0\text{person}[j]} + \\ & \ \ \ \ (\bar\beta_1 + \beta_{1\text{person}[j]})A_i + \\ & \ \ \ \ (\bar\beta_2 + \beta_{2\text{person}[j]})P_i + \\ & \ \ \ \ (\bar\beta_3 + \beta_{3\text{person}[j]})O_i \\
+\begin{bmatrix} \beta_{0\text{person}} \\ \beta_{1\text{person}} \\ \beta_{2\text{person}} \\ \beta_{3\text{person}} \end{bmatrix} & \sim \operatorname{MVN}(\mathbf{0}, \mathbf{\Sigma}) \\
+\Sigma &= \mathbf{SRS} \\
+\mathbf{S} &= \begin{bmatrix} \sigma_{\beta_0} &0 &0 &0 \\ 0 &\sigma_{\beta_1} &0 &0 \\ 0 &0 &\sigma_{\beta_2} &0 \\ 0 &0 &0 &\sigma_{\beta_3} \end{bmatrix} \\
+\mathbf{R} &= \begin{bmatrix} 1 &\rho_{\beta_0\beta_1} &\rho_{\beta_0\beta_2} &\rho_{\beta_0\beta_3} \\ \rho_{\beta_0\beta_1} &1 &\rho_{\beta_1\beta_2} &\rho_{\beta_1\beta_3} \\ \rho_{\beta_0\beta_2} &\rho_{\beta_1\beta_2} &1 &\rho_{\beta_2\beta_3} \\ \rho_{\beta_0\beta_3} &\rho_{\beta_1\beta_3} &\rho_{\beta_2\beta_3} &1 \end{bmatrix},
+\end{align*}
+
+where $y_{ij}$ is the $i^{th}$ total well-being response from the $j^{th}$ person, $A_i$ and $P_i$ are active and passive social media use values, respectively, and $O_i$ is the $i^{th}$ measurement occasion for the person. These three predictors are within-person centered. Symbols with bars denote population-level parameters, and indicate intercepts and slopes for the average person in the population. Parameters with person subscripts indicate person-specific deviations from the averages, assumed to be draws from a multivariate normal distribution with standard deviations $\mathbf{S}$ and correlations $\mathbf{R}$. Therefore this model contains person-specific associations as the sums of the averages and deviations, e.g. $(\bar\beta_2 + \beta_{2\text{person}[j]})$. We believe this formulation to correspond to the authors' model 1B based on the verbal description and shared R and MPlus code.
+
+Thanks to the authors sharing their data [@Beyens2021], we reproduced their analysis in R, but with three key differences: We did not use robust standard errors, we were not able to reproduce the number of observations (authors reported 2,155, but the data we used had 2,210), and we focused on the arguably more meaningful unstandardized coefficients [@baguleyStandardizedSimpleEffect2009; @cohenProblemUnitsCircumstance1999; @moellerWordStandardizationLongitudinal2015]. In addition, we were not sure if the predictors were latent-mean or observed-mean centered. None of these differences are material to the points we are about to illustrate, but explain why the numbers we report do not exactly reproduce the numbers reported in [@beyensEffectSocialMedia2020]. We present the key parameter estimates from this model in Table \@ref(tab:tab-coef).
+
+```{r data-process}
+# The data is cited in the paper as "The dataset generated and analysed during the current study is available in Figshare." (https://uvaauas.figshare.com/articles/dataset/Dataset_belonging_to_Beyens_et_al_2020_The_effect_of_social_media_on_well-being_differs_from_adolescent_to_adolescent/12497990)
+
+# Download data if not yet downloaded
+dir.create("data", FALSE)
+path <- here("data/beyens-et-al-2020.sav")
+if (!file.exists(path)) {
+  # Data from figshare
+  download.file(
+    "https://uvaauas.figshare.com/ndownloader/files/24028271", 
+    path
+  )
+  # Code from OSF
+  download.file(
+    "https://files.de-1.osf.io/v1/resources/bvfuw/providers/osfstorage/5df9effa64e19d000d0f51da/?zip=",
+    "data/Analyses.zip"
+  )
+  unzip(
+    "data/Analyses.zip",
+    exdir = "data/Analyses"
+  )
+}
+
+# Active, Passive, and Total were sums of the platform (e.g. whatsapp) times
+d <- read_spss(path) %>% 
+  transmute(
+    pid = factor(EthicaID),
+    # I think they divided this by ten
+    occ = (OccNrR - 1) / 10,
+    active = rowSums(select(., contains("Act")), na.rm = TRUE),
+    passive = rowSums(select(., contains("Pas")), na.rm = TRUE),
+    wb = as.numeric(AffWB)
+  ) %>% 
+  arrange(pid, occ)
+
+# Remove times in excess of 60min
+d <- d %>% 
+  mutate(
+    across(c(active, passive), ~if_else(. > 60, 60, .))
+  )
+
+# Categorizing and centering on observed means
+d <- d %>% 
+  # Categorical vars
+  mutate(
+    across(c(active, passive), list(c = ~if_else(.==0, 0, 1)))
+  ) %>% 
+  # Mean-centering
+  mutate(
+    across(
+      c(starts_with("active"), starts_with("passive"), occ),
+      ~. - mean(.)
+    )
+  ) %>% 
+  group_by(pid) %>% 
+  mutate(
+    across(
+      c(starts_with("active"), starts_with("passive")),
+      .fns = list(b = ~mean(.), w = ~ . - mean(.))
+    )
+  ) %>% 
+  ungroup()
+```
+
+
+```{r model}
+# Model with binary predictor
+fit <- brm(
+  wb ~ occ + active_c_w + passive_c_w + 
+    (occ + active_c_w + passive_c_w | pid), 
+  data = d,
+  backend = "cmdstanr",
+  cores = 4,
+  control = list(adapt_delta = .99),
+  file = "models/brm-wb"
+)
+```
+
+```{r tab-coef}
+as_draws_df(fit, variable = c("b_", "sd_", "sigma"), regex = TRUE) %>% 
+  transmute(
+    Intercept = b_Intercept,
+    Assessment = b_occ,
+    `Passive use` = b_passive_c_w,
+    `Active use` = b_active_c_w,
+    `Sigma (residual)` = sigma,
+    `Sigma (passive use)` = sd_pid__passive_c_w,
+    `Sigma (active use)` = sd_pid__active_c_w,
+    ) %>% 
+  summarise_draws(mean, sd) %>% 
+  mutate(
+    across(c(mean, sd), ~number(., .01))
+  ) %>% 
+  transmute(
+    Variable = variable,
+    `B (SD)` = str_glue("{mean} ({sd})")
+  ) %>% 
+  apa_table(
+    caption = "Key parameter estimates",
+    note = "Numbers indicate posterior means\nand (standard deviations).",
+    span_text_columns = FALSE
+  )
+```
+
+From this model, the authors then calculated the percentages quoted above by examining the proportions of $(\bar\beta_2 + \beta_{2\text{person}[j]})$ that were below (= negative effect) or above (= positive effect) the -.1 to .1 (standardized) range. Point estimates within that range were classified as no effect ("did not feel better or worse after passive social media use"). We reproduce these numbers in the second column of Table \@ref(tab:tab-qoi) for clarity.
+
+We find these numbers problematic for two reasons. First, they are reported without considering the uncertainties in the person-specific estimates. We think that a person-specific approach, if it intends to make inferences about specific individuals, ought to consider the certainty with which those individuals' characteristics (i.e. person-specific effects) are estimated. Similarly, from a heterogeneity-perspective, ignoring uncertainties and making inferences based on point estimates only will lead to distorted results. Thus, a more suitable approach would be to find person-specific estimates that are outside the null region with (e.g.) 95% confidence [@kruschkeBayesianNewStatistics2017].
+
+To illustrate this point, after estimating the model we drew a caterpillar plot of $(\bar\beta_1 + \beta_{1\text{person}[j]})$ and $(\bar\beta_2 + \beta_{2\text{person}[j]})$ (Figure \@ref(fig:caterpillar) left and right, respectively.) We colored the person-specific estimates based on whether the posterior mean was outside or inside the null region. The authors used standardized effect size limits of (-0.1, 0.1) for the null region, but here we used a smallest effect size of interest (SESOI) of (-0.14, 0.14) on the raw scale---an approximate magnitude of change required to subjectively notice changes on well-being scales of this type [@anvariUsingAnchorbasedMethods2021]. Only 1 out of 63 individuals in this sample had a credibly non-null estimated association between passive social media use and well-being (estimates that are credibly outside the null region are filled in Figure \@ref(fig:caterpillar)). No other person's parameter was credibly outside the null region. In fact, they all indicated indecisive, not null, results. We show these results numerically in the third column of Table \@ref(tab:tab-qoi). Ignoring the person-specific estimates' uncertainties can lead to numbers that do not represent the sample characteristics well, and can greatly articifially inflate the confidence in the results.
+
+Additionally, this discussion highlights the difference between null and inconclusive results, a critical distinction thusfar ignored by the novel person-specific paradigm as a consequence of ignoring the person-specific parameters' uncertainties. We think that if the goal of this new paradigm is to discuss the specific individuals in the sample, these uncertainties cannot be ignored.
+
+The second reason why reporting percentages of person-level parameters is problematic is even more important. Irrespective of whether person-specific parameters' uncertainties are considered or not, using them to describe population-level characteristics can be misleading. The person-specific coefficients in multilevel models have, by definition, less variance than equivalent parameters in models without partial pooling [@gelmanDataAnalysisUsing2007]. Therefore it is incorrect to use them to reconstruct population-level quantities (e.g., percentage of the population with a negative effect). The correct method for obtaining these percentages is to use the model's population-level parameters $\bar\beta_2$ and $\sigma_{\beta_2}$. These parameters together define the assumed gaussian distribution of associations between passive social media use and well-being in the population, rather than just the sample that was studied.
+
+```{r caterpillar}
+#| fig.height: 4.2
+#| fig.cap: "Caterpillar plot showing person-specific associations between active (left) and passive (right) social media use (use vs. no use) and affective well-being. Points indicate posterior means and 95% credibility intervals. Dark blue indicates that the parameters' posterior mean was outside of the null region. Filled points indicate person-specific estimates whose credibility interval is wholly outside of the null region. Empty points are undecided. Dashed vertical lines indicate smallest effect sizes of interest as defined by 2% of the outcome scale (0.14)."
+
+x1 <- spread_draws(
+  fit,
+  b_active_c_w, b_passive_c_w,
+  r_pid[pid, term] | term
+) %>% 
+  transmute(
+    pid, .draw,
+    Active = b_active_c_w + active_c_w,
+    Passive = b_passive_c_w + passive_c_w
+  ) %>% 
+  pivot_longer(c(Active, Passive)) %>% 
+  group_by(pid, name) %>% 
+  mean_qi() %>% 
+  mutate(
+    zero = case_when(
+      value >= 0.14 ~ "b",
+      value <= -0.14 ~ "b",
+      TRUE ~ "a"
+    ),
+    rope = case_when(
+      .lower >= 0.14 ~ "Positive",
+      .upper <= -0.14 ~ "Negative",
+      .lower >= -0.14 & .upper <= 0.14 ~ "Null",
+      TRUE ~ "Undecided"
+    )
+  ) %>% 
+  arrange(name, value) %>% 
+  mutate(pid = fct_inorder(str_c(pid, name)))
+x1 %>% 
+  ggplot(aes(value, pid, color = zero, shape = rope)) +
+  scale_color_brewer(palette = "Paired") +
+  scale_shape_manual(values = c(19, 21)) +
+  geom_vline(xintercept = c(-.14, .14), lty = 2, size = .15) +
+  geom_vline(xintercept = 0, lty = 1, size = .15) +
+  scale_y_discrete(
+    "Participant",
+    expand = expansion(.025)
+  ) +
+  scale_x_continuous(
+    "Estimated linear increase in well-being (1-7) as a\nfunction of a 10-minute increase in social media use",
+    breaks = extended_breaks(7)
+  ) +
+  geom_linerange(
+    size = .4,
+    aes(xmin = .lower, xmax = .upper)
+  ) +
+  geom_point(fill = "white", stroke = 0.7, size = .9) +
+  facet_wrap("name", scales = "free_y") +
+  theme(
+    axis.text.y = element_blank(), 
+    axis.ticks.y = element_blank(),
+    legend.position = "none"
+  )
+```
+
+Instead of working with the person-specific estimates shown in Figure \@ref(fig:caterpillar), we should use the gaussian distribution function with the estimated population level parameters ($\bar\beta_2$ and $\sigma_{\beta_2}$) to calculate the percentages of people in the population with negative and positive associations greater than some critical value. Working with samples from the model's posterior distribution, it is then straightforward to quantify uncertainty in those percentages [@gelmanBayesianDataAnalysis2013]. 
+
+For an illustration of calculating such population-level percentages, we again used a smallest effect size of interest (SESOI) of 0.14 on the raw scale. The results are shown in the fourth column of Table \@ref(tab:tab-qoi). Three lessons are immediate: One, the appropriately calculated percentages can be vastly different from those calculated from point estimates in Figure \@ref(fig:caterpillar). Two, calculating population-level quantities from the appropriate parameters allows quantifying uncertainty in them, as is shown in the credibility intervals of the percentages in Table \@ref(tab:tab-qoi). Three, there are no undecided person-specific parameters in the population, because the decision to accept or reject null hypotheses pertains to parameters at a different level of analysis. This last point highlights the confusion that results from how the programme under discussion here conflates studying heterogeneity (feature of the population) with person-specific effects (features of individual people), and therefore doesn't meaningfully contribute to an understanding of either.
+
+```{r include = FALSE}
+# Compare stuff
+# Standard deviation of person-specific slopes in the model...
+obs <- sd(coef(fit)$pid[,1,"passive_c_w"]) %>% number(., .01)
+# ...is much smaller than estimated SD
+est <- posterior_summary(fit, variable = "sd_pid__passive_c_w") %>% 
+  number(., .01)
+est <- str_glue("{est[1]} [{est[3]}, {est[4]}]")
+```
+
+To further illustrate the problems in using person-specific estimates in multilevel models to construct population-level quantities, the standard deviation of the model's estimated (posterior mean) $\beta_2$ coefficients is `r obs`. Comparing this to the model's estimated standard deviation $\sigma_{\beta_2}$ (`r est`) shows the former to be an underestimate of the latter. This attenuation is a well-known consequence of ignoring uncertainties and measurement error.
+
+```{r tab-qoi}
+# Calculate QOIs
+qoi <- spread_draws(
+  fit,
+  b_passive_c_w,
+  sd_pid__passive_c_w
+) %>% 
+  rename(b = b_passive_c_w, sd = sd_pid__passive_c_w) %>% 
+  mutate(
+    Negative = pnorm(-0.14, b, sd),
+    Positive = pnorm(0.14, b, sd, lower.tail = FALSE),
+    Null = 1 - Negative - Positive,
+    Undecided = NaN
+  ) %>% 
+  pivot_longer(c(Negative, Positive, Null, Undecided)) %>% 
+  group_by(name) %>% 
+  mean_qi(value) %>% 
+  mutate(
+    across(c(value, .lower, .upper), ~number(.*100, .1)),
+  ) %>% 
+  transmute(
+    Association = name,
+    Percentage = str_glue("{value}% [{.lower}, {.upper}]") %>% as.character(),
+    Percentage = if_else(Association == "Undecided", "", Percentage)
+  )
+
+# Find our percentages from person-specific effects
+x1_tmp <- x1 %>% 
+  filter(name == "Passive") %>% 
+  count(rope) %>% 
+  transmute(
+    Association = rope,
+    Recalculated = percent(n / sum(n), .1)
+  )
+
+# Authors' reported percentages
+authors <- qoi %>% 
+  distinct(Association) %>% 
+  mutate(Authors = c("10%", "44%", "46%", ""))
+
+qoi %>% 
+  left_join(x1_tmp) %>% 
+  left_join(authors) %>% 
+  mutate(
+    Recalculated = if_else(is.na(Recalculated), "0%", Recalculated),
+  ) %>% 
+  select(
+    Classification = Association, 
+    `Beyens et al. (2020` = Authors, 
+    `Sample` = Recalculated, 
+    `Population` = Percentage
+  ) %>% 
+  apa_table(
+    caption = "Original and recalculated heterogeneity in passive social media use associations from Beyens et al. (2020)"
+  )
+```
+
+For these two reasons---ignoring uncertainties and confusing levels of analyses---we suggest that the percentages of social media associations in the population reported in (the abstracts of) a growing number of manuscripts from this research programme are misleading and lack critical context. We showed how those numbers can be appropriately calculated, and then presented with appropriate indications of uncertainty.
+
+# Theoretical objection
+
+Even if we calculate percentages correctly, how do we apply such information in developing and justifying a new paradigm? We argue that doing so is difficult and simply reporting that heterogeneity exists doesn't suffice. For one, the group interprets percentages that are not uniform as evidence that associations are not the same for everyone and we therefore cannot ignore heterogeneity. As we have said previously [@johannesHowShouldWe2021a]: So what---did any theory ever suggest as much? Variation is the norm, not the exception, and we consequently do not immediately know what to do with these findings. The authors suggest that because considerable and yet unexplained between-person differences seem to exist in social media associations, we therefore are now on the cusp of a personalized "media *effects* paradigm" [@valkenburgSocialMediaUse2021, p.74, emphasis ours] akin to those theorized for medicine and education. We argue that merely observing that variation might exist is an insufficient argument for the necessity of a new paradigm. 
+
+We are in agreement that when heterogeneity is considerable, our substantive statements about the population must be qualified by this variation [@bolgerCausalProcessesPsychology2019]. But this is not the same sentiment that drives the argument that we are discussing here. The intent, apparently, is to develop a personalized understanding of social media *effects* for each individual; a truly idiographic goal [@valkenburgSocialMediaUse2021, p.74]. However, to date this goal is approached by extrapolating from inappropriately calculated population-level quantities (percentages of individuals with associations in excess of some critical threshold). This fundamental tension between wants and haves has, we believe, led to a premature consideration of purportedly novel paradigms in a field that has not matured enough either methodologically or theoretically to consider addressing *causal* effects in this manner [see e.g. @ijzermanUseCautionWhen2020].
+
+As we have argued [@johannesHowShouldWe2021a], one way to resolve this tension is to use the information gleaned about heterogeneity in considering meaningful moderators of social media associations [e.g. @bolgerCausalProcessesPsychology2019]. But this is standard practice in psychological research that routinely develops and refines theoretical models by moderating effects and associations with demographic and contextual variables. Another route, we believe espoused by this programme of research, is to move towards an idiographic (person-specific) research paradigm---a topic to which our next objection pertains.
+
+# Paradigmatic objection
+
+Throughout many papers, the group in question advertises their work as working toward or constituting a novel idiographic media effects paradigm [@valkenburgSocialMediaUse2022, p.66]. The argument goes that since they are conducting N=1 analyses, their conclusions are about individuals. But functions of ($\bar\beta_2$, $\sigma_{\beta_2}$) or poor stand-ins thereof (proportions of $\beta_2$), the main results reported in the manuscripts in question, are not idiographic in any meaningful sense of that research tradition. We think that to truly conduct N=1 analyses in an idiographic manner, one must do more than examine ranges of person-specific parameters. 
+
+In the context of multilevel models used in this body of work, idiographic research would refer to understanding each of 63 individuals' $\beta$s and what drove their differences.[^1] It seems to us an inescapable conclusion---unless one wants to conduct e.g. qualitative interview work which we should be doing anyway---that to study this heterogeneity further, we need to introduce more terms in our models to interact the associations of interest with meaningful contextual and person-level variables [@bolgerCausalProcessesPsychology2019]. These may then reduce the residual heterogeneity to such an extent that we may be excused to pronounce that a meaningful between-person moderator has been found, and we have learned something about individual differences in social media associations. Such conclusions and findings would be exceedingly difficult to come by through an idiographic-only approach, where individuals are "treated as holistic systems" [@howardVariableCenteredPersonCenteredPersonSpecific2018, p.849]. Repeating an earlier point, it is also important to not conflate person-specific analyses (which aim at analyzing a specific person) with effect heterogeneity (which encourages finding explanatory factors in the variation in effects).
+
+[^1]: Prominent work in the idiographic research tradition actually argues against using shrinkage estimates for understanding individuals' characteristics, and as a consequence suggests that multilevel models are inappropriate tools for idiographic research [@molenaarManifestoPsychologyIdiographic2004; @molenaarNewPersonSpecificParadigm2009]. While we disagree with the sentiment it is important to note that prominent authors in that field---in which we are not experts---would disagree with the quantitative methods used in the research programme under discussion.
+
+We therefore think it would be best to dampen pronouncements of novel paradigms and innovative N=1 analyses leading to fundamental shifts in the types of evidence we can now glean from adolescents' social media use and well-being. Because of the methodological and theoretical shortcomings detailed above, the research programme that is sometimes a "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] and othertimes a "causal effect heterogeneity paradigm" [@valkenburgSocialMediaUse2022a, p.5] has not, and cannot if it proceeds with currently used methodology, meaningfully contributed to either.
+
+# One last thing {-}
+
+Throughout, we have been discussed *associations* between social media use and well-being. To be clear, the research communications emanating from this "idiographic [...] person-specific media *effects* paradigm" [@valkenburgSocialMediaUse2022, p.66, emphasis ours] consistently use causal language with little to no justification for it. This is especially salient when the same research programme is referred to as a "causal effect heterogeneity" approach [@valkenburgSocialMediaUse2022a, p.5]. Using lagged predictors, examining within-person associations, centering variables on observed or latent means, and other "advanced modeling technique[s]" [@beyensSocialMediaUse2021, p.3] might help, but fall far short from ensuring that the resulting quantitites represent causal effects. Examining causal effects is difficult, and doing so is made even more difficult if we are not clear about when we are and when we are not justified in doing so, and what assumptions must be satisfied to allow causal conclusions [@groszTabooExplicitCausal2020; @hernanCWordScientificEuphemisms2018].
+
+# Conclusion {-}
+
+We have had fruitful back and forth with authors of the research programme whose work we are here commenting [@johannesHowShouldWe2021a; @valkenburgHowAssessVariation2022]. In addition to points raised in those discussions, here we wanted to make clear three points:
+
+1. Quantifying population-level characteristics ought to be done using statistical models' population-level parameters.
+2. Population-level characteristics do little to further the theoretical insights into any one individual's social media use and well-being associations.
+3. Interpreting population-level estimates does not constitute idiographic research or a novel paradigm---especially not one that deals with causal effect.
+
+Our intent is not to discourage publishing the kinds of work that we here criticize. Instead, we hope that our thoughts presented here would help clarify the ideas in those works that are critical to our current understanding of social media's roles---and digital technologies in general---in the well-being of human beings.
+
+# References {-}
+
+::: {#refs custom-style="Bibliography"}
+:::
