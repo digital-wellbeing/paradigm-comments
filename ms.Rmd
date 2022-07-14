@@ -1,13 +1,13 @@
 ---
 title: Three objections to a novel person-specific paradigm in social media effects research
-shorttitle        : Three objections
-leftheader        : Three objections
+shorttitle: Three objections
+leftheader: Three objections
 author: 
-  - name          : Matti Vuorre
-    affiliation   : 1
-    corresponding : yes    # Define only one corresponding author
-    address       : Oxford Internet Institute, University of Oxford
-    email         : matti.vuorre@oii.ox.ac.uk
+  - name: Matti Vuorre
+    affiliation: 1
+    corresponding: yes    # Define only one corresponding author
+    address: Oxford Internet Institute, University of Oxford
+    email: matti.vuorre@oii.ox.ac.uk
     role:
       - Conceptualization
       - Formal analysis
@@ -15,24 +15,24 @@ author:
       - Visualization
       - Writing - Original Draft Preparation
       - Writing - Review & Editing
-  - name          : Niklas Johannes
-    affiliation   : 1
-    address       : Oxford Internet Institute, University of Oxford
-    email         : niklas.johannes@oii.ox.ac.uk
+  - name: Niklas Johannes
+    affiliation: 1
+    address: Oxford Internet Institute, University of Oxford
+    email: niklas.johannes@oii.ox.ac.uk
     role:
       - Conceptualization
       - Writing - Original Draft Preparation
       - Writing - Review & Editing
   - name: Andrew K. Przybylski
     affiliation: 1
-    address       : Oxford Internet Institute, University of Oxford
-    email         : andy.przybylski@oii.ox.ac.uk
+    address: Oxford Internet Institute, University of Oxford
+    email: andy.przybylski@oii.ox.ac.uk
     role:
       - Writing - Original Draft Preparation
       - Writing - Review & Editing
 affiliation:
-  - id            : 1
-    institution   : Oxford Internet Institute, University of Oxford
+  - id: 1
+    institution: Oxford Internet Institute, University of Oxford
 authornote: |
   A non-peer reviewed pre-print of this work is available at <psyarxiv>.
   All code supporting this manuscript is available at <github>.
@@ -42,16 +42,16 @@ abstract: |
   Here, we outline three objections to that research programme. On a methodological level, the key empirical results of this programme---proportions of the population of individuals with negative, null, and positive social media effects---are inappropriately estimated and reported. On a theoretical level, these results do little to advance our understanding of social media and its psychological implications. On a  paradigmatic level, this "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] does not make inferences about individuals and therefore does not deliver what it claims. 
   
   We fear that this research programme is contributing to confusing messaging to both societal stakeholders and scientists. We hope that describing these objections will prompt the field to work together in adopting better practices to ultimately develop a better understanding of well-being in the digital age.
-keywords          : social media, media effects, well-being, variation, paradigm
-wordcount         : 3201
-bibliography      : person-specific-paradigm.bib
-floatsintext      : yes
-linenumbers       : no
-draft             : no
-mask              : no
-figurelist        : no
-tablelist         : no
-footnotelist      : no
+keywords: social media, media effects, well-being, variation, paradigm
+wordcount: "2,802"
+bibliography: person-specific-paradigm.bib
+floatsintext: yes
+linenumbers: no
+draft: no
+mask: no
+figurelist: no
+tablelist: no
+footnotelist: no
 header-includes:
   - |
     \makeatletter
@@ -66,9 +66,9 @@ header-includes:
       {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
     \makeatother
 
-csl               : "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
-documentclass     : "apa7"
-classoption       : jou
+csl: "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
+documentclass: apa7
+classoption: jou
 output: 
   papaja::apa6_pdf:
     number_sections: true
@@ -89,7 +89,7 @@ library(ggstance)
 library(tidybayes)
 library(brms)
 library(tidyverse)
-dir.create("models")
+dir.create("models", FALSE)
 opts_chunk$set(
   eval = TRUE,
   cache = TRUE,
@@ -195,8 +195,9 @@ d <- d %>%
   ungroup()
 ```
 
-
 ```{r model}
+#| cache: false
+
 # Model with binary predictor
 fit <- brm(
   wb ~ occ + active_c_w + passive_c_w + 
@@ -212,13 +213,14 @@ fit <- brm(
 ```{r tab-coef}
 as_draws_df(fit, variable = c("b_", "sd_", "sigma"), regex = TRUE) %>% 
   transmute(
-    Intercept = b_Intercept,
-    Assessment = b_occ,
-    `Passive use` = b_passive_c_w,
-    `Active use` = b_active_c_w,
-    `Sigma (residual)` = sigma,
-    `Sigma (passive use)` = sd_pid__passive_c_w,
-    `Sigma (active use)` = sd_pid__active_c_w,
+    `Intercept ($\\bar{\\beta}_0$)` = b_Intercept,
+    `Active use ($\\bar{\\beta}_1$)` = b_active_c_w,
+    `Passive use ($\\bar{\\beta}_2$)` = b_passive_c_w,
+    `Occasion ($\\bar{\\beta}_3$)` = b_occ,
+    `SD Intercept ($\\sigma_{\\beta_0}$)` = sd_pid__Intercept,
+    `SD Active use ($\\sigma_{\\beta_1}$)` = sd_pid__active_c_w,
+    `SD Passive use ($\\sigma_{\\beta_2}$)` = sd_pid__passive_c_w,
+    `Residual ($\\sigma_y$)` = sigma
     ) %>% 
   summarise_draws(mean, sd) %>% 
   mutate(
@@ -229,9 +231,10 @@ as_draws_df(fit, variable = c("b_", "sd_", "sigma"), regex = TRUE) %>%
     `B (SD)` = str_glue("{mean} ({sd})")
   ) %>% 
   apa_table(
-    caption = "Key parameter estimates",
+    caption = "Key parameter estimates from model linking active and passive social media use to well-being (Beyens et al., 2020; Model 1B).",
     note = "Numbers indicate posterior means\nand (standard deviations).",
-    span_text_columns = FALSE
+    span_text_columns = FALSE,
+    escape = FALSE
   )
 ```
 
@@ -272,7 +275,7 @@ x1 <- spread_draws(
       .lower >= 0.14 ~ "Positive",
       .upper <= -0.14 ~ "Negative",
       .lower >= -0.14 & .upper <= 0.14 ~ "Null",
-      TRUE ~ "Undecided"
+      TRUE ~ "Inconclusive"
     )
   ) %>% 
   arrange(name, value) %>% 
@@ -332,9 +335,9 @@ qoi <- spread_draws(
     Negative = pnorm(-0.14, b, sd),
     Positive = pnorm(0.14, b, sd, lower.tail = FALSE),
     Null = 1 - Negative - Positive,
-    Undecided = NaN
+    Inconclusive = NaN
   ) %>% 
-  pivot_longer(c(Negative, Positive, Null, Undecided)) %>% 
+  pivot_longer(c(Negative, Positive, Null, Inconclusive)) %>% 
   group_by(name) %>% 
   mean_qi(value) %>% 
   mutate(
@@ -343,7 +346,7 @@ qoi <- spread_draws(
   transmute(
     Association = name,
     Percentage = str_glue("{value}% [{.lower}, {.upper}]") %>% as.character(),
-    Percentage = if_else(Association == "Undecided", "", Percentage)
+    Percentage = if_else(Association == "Inconclusive", "", Percentage)
   )
 
 # Find our percentages from person-specific effects
