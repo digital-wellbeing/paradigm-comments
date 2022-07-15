@@ -34,7 +34,7 @@ affiliation:
   - id: 1
     institution: Oxford Internet Institute, University of Oxford
 authornote: |
-  A non-peer reviewed pre-print of this work is available at <psyarxiv>.
+  A non-peer reviewed pre-print of this work is available at <https://psyarxiv.com/dpuya>.
   All code supporting this manuscript is available at <https://github.com/digital-wellbeing/paradigm-comments>.
 abstract: |
   The study of social media effects on psychological well-being has reached an impasse: Popular commentators confidently assert that social media are bad for users but research results are mixed and have had little practical impact. In response, one research group has proposed a path forward for the field that moves beyond studying population averages to find effects that are specific to individuals.

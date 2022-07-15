@@ -5,7 +5,6 @@
 data/
 models/
 ms_*/
-*.pdf
 *.docx
 *.tex
 *.log
