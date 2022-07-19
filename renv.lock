@@ -73,10 +73,10 @@
     },
     "MASS": {
       "Package": "MASS",
-      "Version": "7.3-57",
+      "Version": "7.3-58",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "71476c1d88d1ebdf31580e5a257d5d31",
+      "Hash": "4bf2c61e656bbc238634c798c208d386",
       "Requirements": []
     },
     "Matrix": {
@@ -87,22 +87,6 @@
       "Hash": "699c47c606293bdfbc9fd78a93c9c8fe",
       "Requirements": [
         "lattice"
-      ]
-    },
-    "MatrixModels": {
-      "Package": "MatrixModels",
-      "Version": "0.5-0",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "MatrixModels",
-      "RemoteRef": "MatrixModels",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.5-0",
-      "Hash": "366a8838782928e398b8762c932a42a3",
-      "Requirements": [
-        "Matrix"
       ]
     },
     "R6": {
@@ -127,26 +111,12 @@
       "Hash": "45f0398006e83a5b10b72a90663d8d8c",
       "Requirements": []
     },
-    "RUnit": {
-      "Package": "RUnit",
-      "Version": "0.4.32",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "11af2a900964b790c6d775e0c9e8025f",
-      "Requirements": []
-    },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.0.8.3",
-      "Source": "CRAN",
+      "Version": "1.0.9",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "Rcpp",
-      "RemoteRef": "Rcpp",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.0.8.3",
-      "Hash": "32e79b908fda56ee57fe518a8d37b864",
+      "Hash": "e9c08b94391e9f3f97355841229124f2",
       "Requirements": []
     },
     "RcppEigen": {
@@ -172,20 +142,6 @@
       "RemotePkgPlatform": "aarch64-apple-darwin20",
       "RemoteSha": "5.1.5",
       "Hash": "f3e94e34ff656a7c8336ce01207bc2b8",
-      "Requirements": []
-    },
-    "SparseM": {
-      "Package": "SparseM",
-      "Version": "1.81",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "SparseM",
-      "RemoteRef": "SparseM",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.81",
-      "Hash": "2042cd9759cc89a453c4aefef0ce9aae",
       "Requirements": []
     },
     "StanHeaders": {
@@ -317,17 +273,6 @@
         "tidyselect"
       ]
     },
-    "bayestestR": {
-      "Package": "bayestestR",
-      "Version": "0.12.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "20d1ba1ba2f76a65d54bc7e4002ddc44",
-      "Requirements": [
-        "datawizard",
-        "insight"
-      ]
-    },
     "bit": {
       "Package": "bit",
       "Version": "4.0.4",
@@ -385,14 +330,6 @@
         "yaml"
       ]
     },
-    "boot": {
-      "Package": "boot",
-      "Version": "1.3-28",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0baa960e3b49c6176a4f42addcbacc59",
-      "Requirements": []
-    },
     "bridgesampling": {
       "Package": "bridgesampling",
       "Version": "1.1-2",
@@ -413,20 +350,6 @@
         "scales",
         "stringr"
       ]
-    },
-    "brio": {
-      "Package": "brio",
-      "Version": "1.1.3",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "brio",
-      "RemoteRef": "brio",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.1.3",
-      "Hash": "976cf154dfb043c012d87cddd8bca363",
-      "Requirements": []
     },
     "brms": {
       "Package": "brms",
@@ -483,20 +406,16 @@
     },
     "bslib": {
       "Package": "bslib",
-      "Version": "0.3.1",
-      "Source": "CRAN",
+      "Version": "0.4.0",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "bslib",
-      "RemoteRef": "bslib",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.3.1",
-      "Hash": "56ae7e1987b340186a8a5a157c2ec358",
+      "Hash": "be5ee090716ce1671be6cd5d7c34d091",
       "Requirements": [
+        "cachem",
         "htmltools",
         "jquerylib",
         "jsonlite",
+        "memoise",
         "rlang",
         "sass"
       ]
@@ -520,53 +439,14 @@
     },
     "callr": {
       "Package": "callr",
-      "Version": "3.7.0",
-      "Source": "CRAN",
+      "Version": "3.7.1",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "callr",
-      "RemoteRef": "callr",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "3.7.0",
-      "Hash": "461aa75a11ce2400245190ef5d3995df",
+      "Hash": "2fda237f24bc56508f31394beaa56877",
       "Requirements": [
         "R6",
         "processx"
       ]
-    },
-    "car": {
-      "Package": "car",
-      "Version": "3.1-0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "afd3f5c7d144f00d05db8e7701af7829",
-      "Requirements": [
-        "MASS",
-        "abind",
-        "carData",
-        "lme4",
-        "maptools",
-        "mgcv",
-        "nlme",
-        "nnet",
-        "pbkrtest",
-        "quantreg"
-      ]
-    },
-    "carData": {
-      "Package": "carData",
-      "Version": "3.0-5",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "carData",
-      "RemoteRef": "carData",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "3.0-5",
-      "Hash": "ac6cdb8552c61bd36b0e54d07cf2aab7",
-      "Requirements": []
     },
     "cellranger": {
       "Package": "cellranger",
@@ -756,22 +636,12 @@
       "Hash": "36b67b5adf57b292923f5659f5f0c853",
       "Requirements": []
     },
-    "datawizard": {
-      "Package": "datawizard",
-      "Version": "0.4.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "b1d9b9d4f73830cea95ed48f3d64be2e",
-      "Requirements": [
-        "insight"
-      ]
-    },
     "dbplyr": {
       "Package": "dbplyr",
-      "Version": "2.2.0",
+      "Version": "2.2.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "a6e4cc7b658d043806bc559ef42a1d2a",
+      "Hash": "f6c7eb9617e4d2a86bb7182fff99c805",
       "Requirements": [
         "DBI",
         "R6",
@@ -807,22 +677,6 @@
         "R6",
         "cli",
         "rprojroot"
-      ]
-    },
-    "diffobj": {
-      "Package": "diffobj",
-      "Version": "0.3.5",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "diffobj",
-      "RemoteRef": "diffobj",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.3.5",
-      "Hash": "bcaa8b95f8d7d01a5dedfd959ce88ab8",
-      "Requirements": [
-        "crayon"
       ]
     },
     "digest": {
@@ -928,20 +782,6 @@
         "zoo"
       ]
     },
-    "effectsize": {
-      "Package": "effectsize",
-      "Version": "0.7.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "61ffd5058e9a3c44f91165bdd5796890",
-      "Requirements": [
-        "bayestestR",
-        "datawizard",
-        "insight",
-        "parameters",
-        "performance"
-      ]
-    },
     "ellipsis": {
       "Package": "ellipsis",
       "Version": "0.3.2",
@@ -957,33 +797,6 @@
       "Requirements": [
         "rlang"
       ]
-    },
-    "emmeans": {
-      "Package": "emmeans",
-      "Version": "1.7.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1154980a9e0122dcff12975b5fe826ce",
-      "Requirements": [
-        "estimability",
-        "mvtnorm",
-        "numDeriv",
-        "xtable"
-      ]
-    },
-    "estimability": {
-      "Package": "estimability",
-      "Version": "1.3",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "estimability",
-      "RemoteRef": "estimability",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.3",
-      "Hash": "05901bd61be60fd3bfc5b7d7c3517d1d",
-      "Requirements": []
     },
     "evaluate": {
       "Package": "evaluate",
@@ -1070,14 +883,6 @@
         "rlang",
         "tibble"
       ]
-    },
-    "foreign": {
-      "Package": "foreign",
-      "Version": "0.8-82",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "32b25c97ce306a760c4d9f787991b5d9",
-      "Requirements": []
     },
     "fs": {
       "Package": "fs",
@@ -1336,10 +1141,10 @@
     },
     "gtools": {
       "Package": "gtools",
-      "Version": "3.9.2.2",
+      "Version": "3.9.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "cb9db9447a50d3e2d968fec4bcc0d2cd",
+      "Hash": "32600a0bea839c4d0ac998d7c547ecf7",
       "Requirements": []
     },
     "haven": {
@@ -1409,16 +1214,10 @@
     },
     "htmltools": {
       "Package": "htmltools",
-      "Version": "0.5.2",
-      "Source": "CRAN",
+      "Version": "0.5.3",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "htmltools",
-      "RemoteRef": "htmltools",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.5.2",
-      "Hash": "526c484233f42522278ab06fb185cb26",
+      "Hash": "6496090a9e00f8354b811d1a2d47b566",
       "Requirements": [
         "base64enc",
         "digest",
@@ -1520,14 +1319,6 @@
       "Hash": "1deaf1de3eac7e1d3377954b3a283652",
       "Requirements": []
     },
-    "insight": {
-      "Package": "insight",
-      "Version": "0.17.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1ce0d9c527482d41e0f36e9217847674",
-      "Requirements": []
-    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.5",
@@ -1592,35 +1383,6 @@
       "Hash": "d07e729b27b372429d42d24d503613a0",
       "Requirements": []
     },
-    "kableExtra": {
-      "Package": "kableExtra",
-      "Version": "1.3.4",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "kableExtra",
-      "RemoteRef": "kableExtra",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.3.4",
-      "Hash": "49b625e6aabe4c5f091f5850aba8ff78",
-      "Requirements": [
-        "digest",
-        "glue",
-        "htmltools",
-        "knitr",
-        "magrittr",
-        "rmarkdown",
-        "rstudioapi",
-        "rvest",
-        "scales",
-        "stringr",
-        "svglite",
-        "viridisLite",
-        "webshot",
-        "xml2"
-      ]
-    },
     "knitr": {
       "Package": "knitr",
       "Version": "1.39",
@@ -1633,20 +1395,6 @@
         "stringr",
         "xfun",
         "yaml"
-      ]
-    },
-    "kutils": {
-      "Package": "kutils",
-      "Version": "1.70",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "32d0f7568fac85e7dfec288ea10a0433",
-      "Requirements": [
-        "RUnit",
-        "foreign",
-        "openxlsx",
-        "plyr",
-        "xtable"
       ]
     },
     "labeling": {
@@ -1733,43 +1481,6 @@
       "Hash": "0bde42ee282efb18c7c4e63822f5b4f7",
       "Requirements": []
     },
-    "lme4": {
-      "Package": "lme4",
-      "Version": "1.1-29",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "4f55df530bfb9fe95fc42738fa55f183",
-      "Requirements": [
-        "MASS",
-        "Matrix",
-        "Rcpp",
-        "RcppEigen",
-        "boot",
-        "lattice",
-        "minqa",
-        "nlme",
-        "nloptr"
-      ]
-    },
-    "lmerTest": {
-      "Package": "lmerTest",
-      "Version": "3.1-3",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "lmerTest",
-      "RemoteRef": "lmerTest",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "3.1-3",
-      "Hash": "f04948de84602afc23bfa9f5427e954d",
-      "Requirements": [
-        "MASS",
-        "ggplot2",
-        "lme4",
-        "numDeriv"
-      ]
-    },
     "loo": {
       "Package": "loo",
       "Version": "2.5.1",
@@ -1812,18 +1523,6 @@
       "Hash": "7ce2733a9826b3aeb1775d56fd305472",
       "Requirements": []
     },
-    "maptools": {
-      "Package": "maptools",
-      "Version": "1.1-4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "e60a1728ad29c48a3491777e0c55a07d",
-      "Requirements": [
-        "foreign",
-        "lattice",
-        "sp"
-      ]
-    },
     "markdown": {
       "Package": "markdown",
       "Version": "1.1",
@@ -1848,6 +1547,23 @@
       "Repository": "CRAN",
       "Hash": "36ad89a805c436c5316c22490079da67",
       "Requirements": []
+    },
+    "memoise": {
+      "Package": "memoise",
+      "Version": "2.0.1",
+      "Source": "CRAN",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "memoise",
+      "RemoteRef": "memoise",
+      "RemoteRepos": "https://cran.rstudio.com/",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "2.0.1",
+      "Hash": "e2817ccf4a065c5d9d7f2cfbe7c1d78c",
+      "Requirements": [
+        "cachem",
+        "rlang"
+      ]
     },
     "mgcv": {
       "Package": "mgcv",
@@ -1889,22 +1605,6 @@
       "Requirements": [
         "htmltools",
         "shiny"
-      ]
-    },
-    "minqa": {
-      "Package": "minqa",
-      "Version": "1.2.4",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "minqa",
-      "RemoteRef": "minqa",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.2.4",
-      "Hash": "eaee7d2a6f3ed4491df868611cb064cc",
-      "Requirements": [
-        "Rcpp"
       ]
     },
     "modelr": {
@@ -1984,24 +1684,6 @@
         "lattice"
       ]
     },
-    "nloptr": {
-      "Package": "nloptr",
-      "Version": "2.0.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "277c67a08f358f42b6a77826e4492f79",
-      "Requirements": [
-        "testthat"
-      ]
-    },
-    "nnet": {
-      "Package": "nnet",
-      "Version": "7.3-17",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "cb1d8d9f300a7e536b89c8a88c53f610",
-      "Requirements": []
-    },
     "numDeriv": {
       "Package": "numDeriv",
       "Version": "2016.8-1.1",
@@ -2024,18 +1706,6 @@
       "Hash": "6d3bef2e305f55c705c674653c7d7d3d",
       "Requirements": [
         "askpass"
-      ]
-    },
-    "openxlsx": {
-      "Package": "openxlsx",
-      "Version": "4.2.5",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "fc5e0e85d3a1e4282f04f303627b7e72",
-      "Requirements": [
-        "Rcpp",
-        "stringi",
-        "zip"
       ]
     },
     "papaja": {
@@ -2069,69 +1739,14 @@
       "Hash": "022489ebce2ef2438db4583fae118240",
       "Requirements": []
     },
-    "parameters": {
-      "Package": "parameters",
-      "Version": "0.18.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0a699bb8ad1ff58c9c603698572dda0a",
-      "Requirements": [
-        "bayestestR",
-        "datawizard",
-        "insight"
-      ]
-    },
-    "pbkrtest": {
-      "Package": "pbkrtest",
-      "Version": "0.5.1",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "pbkrtest",
-      "RemoteRef": "pbkrtest",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.5.1",
-      "Hash": "b304ff5955f37b48bd30518faf582929",
-      "Requirements": [
-        "MASS",
-        "Matrix",
-        "broom",
-        "dplyr",
-        "knitr",
-        "lme4",
-        "magrittr",
-        "numDeriv"
-      ]
-    },
-    "performance": {
-      "Package": "performance",
-      "Version": "0.9.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "3764faa0c6fcfb1220e22cf2add991d5",
-      "Requirements": [
-        "bayestestR",
-        "datawizard",
-        "insight"
-      ]
-    },
     "pillar": {
       "Package": "pillar",
-      "Version": "1.7.0",
-      "Source": "CRAN",
+      "Version": "1.8.0",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "pillar",
-      "RemoteRef": "pillar",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.7.0",
-      "Hash": "51dfc97e1b7069e9f7e6f83f3589c22e",
+      "Hash": "f95cf85794546c4ac2b9a6ca42e671ff",
       "Requirements": [
         "cli",
-        "crayon",
-        "ellipsis",
         "fansi",
         "glue",
         "lifecycle",
@@ -2177,23 +1792,6 @@
       "Hash": "01f28d4278f15c76cddbea05899c5d6f",
       "Requirements": []
     },
-    "pkgload": {
-      "Package": "pkgload",
-      "Version": "1.3.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "4b20f937a363c78a5730265c1925f54a",
-      "Requirements": [
-        "cli",
-        "crayon",
-        "desc",
-        "fs",
-        "glue",
-        "rlang",
-        "rprojroot",
-        "withr"
-      ]
-    },
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.7",
@@ -2227,20 +1825,6 @@
         "tibble",
         "vctrs"
       ]
-    },
-    "praise": {
-      "Package": "praise",
-      "Version": "1.0.0",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "praise",
-      "RemoteRef": "praise",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.0.0",
-      "Hash": "a555924add98c99d2f411e37e7d25e9f",
-      "Requirements": []
     },
     "prettyunits": {
       "Package": "prettyunits",
@@ -2323,20 +1907,6 @@
       "Requirements": [
         "magrittr",
         "rlang"
-      ]
-    },
-    "quantreg": {
-      "Package": "quantreg",
-      "Version": "5.93",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "48485e5cbfe385caf47ce1d9442f5147",
-      "Requirements": [
-        "MASS",
-        "Matrix",
-        "MatrixModels",
-        "SparseM",
-        "survival"
       ]
     },
     "rappdirs": {
@@ -2511,19 +2081,6 @@
         "rmarkdown"
       ]
     },
-    "rockchalk": {
-      "Package": "rockchalk",
-      "Version": "1.8.152",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "6c7772880213acb87da474de3ad429ca",
-      "Requirements": [
-        "MASS",
-        "carData",
-        "kutils",
-        "lme4"
-      ]
-    },
     "rprojroot": {
       "Package": "rprojroot",
       "Version": "2.0.3",
@@ -2601,16 +2158,10 @@
     },
     "sass": {
       "Package": "sass",
-      "Version": "0.4.1",
-      "Source": "CRAN",
+      "Version": "0.4.2",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "sass",
-      "RemoteRef": "sass",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.4.1",
-      "Hash": "f37c0028d720bab3c513fd65d28c7234",
+      "Hash": "1b191143d7d3444d504277843f3a95fe",
       "Requirements": [
         "R6",
         "fs",
@@ -2753,59 +2304,6 @@
         "shiny"
       ]
     },
-    "sjlabelled": {
-      "Package": "sjlabelled",
-      "Version": "1.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "4bd18166ef8ca74aeec74ad295dfe77f",
-      "Requirements": [
-        "datawizard",
-        "insight"
-      ]
-    },
-    "sjmisc": {
-      "Package": "sjmisc",
-      "Version": "2.8.9",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "86176cb3be04b2930649dce2bf56d3cb",
-      "Requirements": [
-        "dplyr",
-        "insight",
-        "magrittr",
-        "purrr",
-        "rlang",
-        "sjlabelled",
-        "tidyselect"
-      ]
-    },
-    "sjstats": {
-      "Package": "sjstats",
-      "Version": "0.18.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "30c55099bbe117030d8649b4ba8fc01b",
-      "Requirements": [
-        "MASS",
-        "bayestestR",
-        "broom",
-        "dplyr",
-        "effectsize",
-        "emmeans",
-        "insight",
-        "lme4",
-        "magrittr",
-        "modelr",
-        "parameters",
-        "performance",
-        "purrr",
-        "rlang",
-        "sjlabelled",
-        "sjmisc",
-        "tidyr"
-      ]
-    },
     "snakecase": {
       "Package": "snakecase",
       "Version": "0.11.0",
@@ -2830,16 +2328,6 @@
       "RemoteSha": "0.1.7",
       "Hash": "947e4e02a79effa5d512473e10f41797",
       "Requirements": []
-    },
-    "sp": {
-      "Package": "sp",
-      "Version": "1.5-0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "2a118bdd2db0a301711e0a9e3e3206d5",
-      "Requirements": [
-        "lattice"
-      ]
     },
     "stringi": {
       "Package": "stringi",
@@ -2867,16 +2355,6 @@
         "stringi"
       ]
     },
-    "survival": {
-      "Package": "survival",
-      "Version": "3.3-1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f6189c70451d3d68e0d571235576e833",
-      "Requirements": [
-        "Matrix"
-      ]
-    },
     "svUnit": {
       "Package": "svUnit",
       "Version": "1.0.6",
@@ -2890,23 +2368,6 @@
       "RemoteSha": "1.0.6",
       "Hash": "894d0aff9585344af4ab78e2b4d60ab7",
       "Requirements": []
-    },
-    "svglite": {
-      "Package": "svglite",
-      "Version": "2.1.0",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "svglite",
-      "RemoteRef": "svglite",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "2.1.0",
-      "Hash": "68dfdf211af6aa4e5f050f064f64d401",
-      "Requirements": [
-        "cpp11",
-        "systemfonts"
-      ]
     },
     "sys": {
       "Package": "sys",
@@ -2922,22 +2383,6 @@
       "Hash": "b227d13e29222b4574486cfcbde077fa",
       "Requirements": []
     },
-    "systemfonts": {
-      "Package": "systemfonts",
-      "Version": "1.0.4",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "systemfonts",
-      "RemoteRef": "systemfonts",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.0.4",
-      "Hash": "90b28393209827327de889f49935140a",
-      "Requirements": [
-        "cpp11"
-      ]
-    },
     "tensorA": {
       "Package": "tensorA",
       "Version": "0.36.2",
@@ -2951,34 +2396,6 @@
       "RemoteSha": "0.36.2",
       "Hash": "fd792ceac77f96b647fa8d6e1788969a",
       "Requirements": []
-    },
-    "testthat": {
-      "Package": "testthat",
-      "Version": "3.1.4",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f76c2a02d0fdc24aa7a47ea34261a6e3",
-      "Requirements": [
-        "R6",
-        "brio",
-        "callr",
-        "cli",
-        "crayon",
-        "desc",
-        "digest",
-        "ellipsis",
-        "evaluate",
-        "jsonlite",
-        "lifecycle",
-        "magrittr",
-        "pkgload",
-        "praise",
-        "processx",
-        "ps",
-        "rlang",
-        "waldo",
-        "withr"
-      ]
     },
     "threejs": {
       "Package": "threejs",
@@ -3091,16 +2508,10 @@
     },
     "tidyverse": {
       "Package": "tidyverse",
-      "Version": "1.3.1",
-      "Source": "CRAN",
+      "Version": "1.3.2",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "tidyverse",
-      "RemoteRef": "tidyverse",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "1.3.1",
-      "Hash": "fc4c72b6ae9bb283416bd59a3303bbab",
+      "Hash": "972389aea7fa1a34739054a810d0c6f6",
       "Requirements": [
         "broom",
         "cli",
@@ -3236,40 +2647,6 @@
         "tzdb",
         "vctrs",
         "withr"
-      ]
-    },
-    "waldo": {
-      "Package": "waldo",
-      "Version": "0.4.0",
-      "Source": "CRAN",
-      "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "waldo",
-      "RemoteRef": "waldo",
-      "RemoteRepos": "https://cran.rstudio.com/",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.4.0",
-      "Hash": "035fba89d0c86e2113120f93301b98ad",
-      "Requirements": [
-        "cli",
-        "diffobj",
-        "fansi",
-        "glue",
-        "rematch2",
-        "rlang",
-        "tibble"
-      ]
-    },
-    "webshot": {
-      "Package": "webshot",
-      "Version": "0.5.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "7261ab7f98e97c771217e6b87c085d6e",
-      "Requirements": [
-        "callr",
-        "jsonlite",
-        "magrittr"
       ]
     },
     "withr": {
