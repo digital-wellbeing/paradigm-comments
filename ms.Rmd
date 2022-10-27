@@ -414,6 +414,10 @@ With all of this in mind, we underscore the valuable and collegial exchanges we 
 
 We also emphasize that our intent is not to discourage publishing the kinds of work that we critique. Instead, we hope that our arguments and worked examples help clarify the ideas under development and bring the outstanding challenges we face into a sharper relief. This and related work is critical to our current understanding of how social media---and digital technologies in general---might influence, for good or ill, our collective well-being.
 
+# Data availability
+
+This study does not report original data, but reanalyses data reported and made available in Beyens et al. [-@beyensEffectSocialMedia2020; -@Beyens2021].
+
 # References {-}
 
 ::: {#refs custom-style="Bibliography"}
