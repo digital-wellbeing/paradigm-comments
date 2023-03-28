@@ -4,25 +4,27 @@ shorttitle: Three objections
 leftheader: Three objections
 author: 
   - name: Matti Vuorre
-    affiliation: 1
-    corresponding: no    # Define only one corresponding author
-    address: Oxford Internet Institute, University of Oxford
-    email: matti.vuorre@oii.ox.ac.uk
+    affiliation: "1,2"
+    corresponding: yes
+    address: Tilburg University
+    email: m.j.vuorre@tilburguniversity.edu
   - name: Niklas Johannes
-    affiliation: 1
+    affiliation: "2"
     address: Oxford Internet Institute, University of Oxford
     email: niklas.johannes@oii.ox.ac.uk
   - name: Andrew K. Przybylski
-    affiliation: 1
+    affiliation: "2"
     address: Oxford Internet Institute, University of Oxford
     email: andy.przybylski@oii.ox.ac.uk
 affiliation:
   - id: 1
+    institution: Tilburg School of Social and Behavioral Sciences, Tilburg University
+  - id: 2
     institution: Oxford Internet Institute, University of Oxford
 abstract: |
   The study of social media effects on psychological well-being has reached an impasse: Popular commentators confidently assert that social media are bad for users but research results are mixed and have had little practical impact. In response, one research group has proposed a path forward for the field that moves beyond studying population averages to find effects that are specific to individuals. Here, we outline three objections to that research agenda. On a methodological level, the key empirical results of this programme---proportions of the population of individuals with negative, null, and positive social media effects---are not appropriately estimated and reported. On a theoretical level, these results do little to advance our understanding of social media and its psychological implications. On a  paradigmatic level, this "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] cannot inform inferences about individuals and therefore does not deliver what it claims. In this work we express our concern that this research approach may be contributing to confusing messaging to both societal stakeholders and scientists investigating how social media and well-being might be related. It is our sincere hope that describing these objections directly will prompt the field to work together in adopting better practices to ultimately develop a better understanding of well-being in the digital age. 
 keywords: social media, media effects, well-being, variation, paradigm
-wordcount: "2,802"
+wordcount: '`r scales::number(wordcountaddin:::word_count("ms.Rmd"), big.mark = ",")`'
 bibliography: person-specific-paradigm.bib
 floatsintext: yes
 linenumbers: no
@@ -65,6 +67,7 @@ theme_set(
   theme_linedraw(base_size = 11) +
     theme(panel.grid = element_blank())
 )
+options(mc.cores = 4)
 ```
 
 Empirically studied associations between social media use and psychological well-being are small, variable from one sample to another and between methodological approaches, have little bearing on causality, and have not led to actionable evidence for stakeholders [@appelAreSocialMedia2020; @bestOnlineCommunicationSocial2014; @braghieriSocialMediaMental2022; @dickson2018screen; @jensenYoungAdolescentsDigital2019; @lambertTakingOneWeekBreak2022; @odgersAnnualResearchReview2020; @ophirNewMediaScreenTime2020; @orbenAssociationAdolescentWellbeing2019; @przybylskiDoesTakingShort2021; @vuorreEstimatingAssociationFacebook2022; @vuorreGlobalWellbeingMental2022; @vuorreThereNoEvidence2021]. In response, one group in particular is moving attention from negligible average associations to individual social media users:
@@ -168,8 +171,6 @@ fit <- brm(
   wb ~ occ + active_c_w + passive_c_w + 
     (occ + active_c_w + passive_c_w | pid), 
   data = d,
-  backend = "cmdstanr",
-  cores = 4,
   control = list(adapt_delta = .99),
   file = "models/brm-wb"
 )
