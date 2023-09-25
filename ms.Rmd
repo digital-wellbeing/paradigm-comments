@@ -22,7 +22,7 @@ affiliation:
   - id: 2
     institution: Oxford Internet Institute, University of Oxford
 abstract: |
-  The study of social media effects on psychological well-being has reached an impasse: Popular commentators confidently assert that social media are bad for users but research results are mixed and have had little practical impact. In response, one research group has proposed a path forward for the field that moves beyond studying population averages to find effects that are specific to individuals. Here, we outline three objections to that research agenda. On a methodological level, the key empirical results of this programme---proportions of the population of individuals with negative, null, and positive social media effects---are not appropriately estimated and reported. On a theoretical level, these results do little to advance our understanding of social media and its psychological implications. On a  paradigmatic level, this "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] cannot inform inferences about individuals and therefore does not deliver what it claims. In this work we express our concern that this research approach may be contributing to confusing messaging to both societal stakeholders and scientists investigating how social media and well-being might be related. It is our sincere hope that describing these objections directly will prompt the field to work together in adopting better practices to ultimately develop a better understanding of well-being in the digital age. 
+  The study of social media effects on psychological well-being has reached an impasse: Popular commentators confidently assert that social media are bad for users but research results are mixed and have had little practical impact. In response, one research group has proposed a path forward for the field that moves beyond studying population averages to find effects that are specific to individuals. We outline three objections to that research agenda. On a methodological level, the key empirical results of this programme---proportions of the population of individuals with negative, null, and positive social media effects---are not appropriately estimated and reported. On a theoretical level, these results do little to advance our understanding of social media and its psychological implications. On a  paradigmatic level, this "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] cannot inform inferences about individuals and therefore does not deliver what it claims. We express concern that this research approach may be contributing to confusing messaging to both societal stakeholders and scientists investigating how social media and well-being might be related. We sincerely hope that describing these objections prompts the field to work together in adopting better practices to develop a better understanding of well-being in the digital age. 
 keywords: social media, media effects, well-being, variation, paradigm
 wordcount: '`r scales::number(wordcountaddin:::word_count("ms.Rmd"), big.mark = ",")`'
 bibliography: person-specific-paradigm.bib
@@ -33,13 +33,13 @@ mask: no
 figurelist: no
 tablelist: no
 footnotelist: no
-csl: "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
+csl: "nature.csl"
 documentclass: apa7
 classoption: doc
 output: 
-  papaja::apa6_pdf:
-    number_sections: true
   papaja::apa6_docx: 
+    number_sections: true
+  papaja::apa6_pdf:
     number_sections: true
 editor_options: 
   chunk_output_type: console
@@ -74,11 +74,11 @@ Empirically studied associations between social media use and psychological well
 
 >"[A]verage associations are derived from heterogeneous populations of SM [social media] users who differ in how they select and respond to SM, a finding that has repeatedly been confirmed in qualitative studies. To truly understand the effects of SMU, researchers need to take the next step, that is, adopting a “causal effect heterogeneity” approach, which enables them to better understand why and how individuals differ in their responses to SMU." [@valkenburgSocialMediaUse2022a, p.5]
 
-Because aggregate statistics purportedly cannot adequately describe individuals, this group hopes that others will follow them in what they alternatively call a "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] or a "causal effect heterogeneity paradigm" [@valkenburgSocialMediaUse2022a, p.5]. We previously outlined concerns with this body of work, including that it conflates studying heterogeneity with idiographic research [@johannesHowShouldWe2021a] [see @valkenburgHowAssessVariation2022 for the authors' response]. Here, we focus on a pervasive methodological issue in that body of work that we did not previously address. Considering this issue in detail suggests three objections to the proposed research programme that, until adequately responded to, limit the usefulness of the programme and its outputs.
+Because aggregate statistics purportedly cannot adequately describe individuals, this group hopes that others will follow them in what they alternatively call a "personalized media effects paradigm" [@valkenburgSocialMediaUse2021, p.74] or a "causal effect heterogeneity paradigm" [@valkenburgSocialMediaUse2022a, p.5]. We previously outlined concerns with this body of work, including that it conflates studying heterogeneity with idiographic research [@johannesHowShouldWe2021a; @valkenburgHowAssessVariation2022]. Here, we focus on a pervasive methodological issue in that body of work that we did not previously address. Considering this issue in detail suggests three objections to the proposed research programme that, until adequately responded to, limit the usefulness of the programme and its outputs.
 
 # Methodological objection
 
-The main outcomes of the programme under question are "striking person-specific effects" [@valkenburgSocialMediaUse2022a, p.5]: Proportions of adolescents with negative, null, and positive associations between social media use and various well-being outcomes. We take these numerical results to be the key estimands because they are typically the numerical results reported in paper abstracts [e.g. @beyensSocialMediaUse2021; @valkenburgSocialMediaBrowsing2021]. Here, we argue that those numbers are inappropriately calculated and interpreted. 
+The main outcomes of the programme under question are "striking person-specific effects" [@valkenburgSocialMediaUse2022a, p.5]: Proportions of adolescents with negative, null, and positive associations between social media use and various well-being outcomes. We take these numerical results to be the key estimands because they are typically the numerical results reported in paper abstracts [@beyensSocialMediaUse2021; @valkenburgSocialMediaBrowsing2021]. We argue that those numbers are inappropriately calculated and interpreted. 
 
 In *The effect of social media on well‐being differs from adolescent to adolescent*, Beyens et al. [-@beyensEffectSocialMedia2020] quantified the person-to-person variability in associations between social media use and affective well-being. They reported that 
 
@@ -89,7 +89,9 @@ To reach these numbers, the authors estimated a statistical model of 2,155 respo
 \begin{align*}
 y_{ij} &\sim \operatorname{Normal}(\eta_{ij}, \sigma^2_y) \\
 \eta_{ij} &= \bar\beta_0 + \beta_{0\text{person}[j]} + \\ & \ \ \ \ (\bar\beta_1 + \beta_{1\text{person}[j]})A_i + \\ & \ \ \ \ (\bar\beta_2 + \beta_{2\text{person}[j]})P_i + \\ & \ \ \ \ (\bar\beta_3 + \beta_{3\text{person}[j]})O_i \\
-\begin{bmatrix} \beta_{0\text{person}} \\ \beta_{1\text{person}} \\ \beta_{2\text{person}} \\ \beta_{3\text{person}} \end{bmatrix} & \sim \operatorname{MVN}(\mathbf{0}, \mathbf{\Sigma}) \\
+\begin{bmatrix} 
+  \beta_{0} \\ \beta_{1} \\ \beta_{2} \\ \beta_{3} 
+\end{bmatrix} & \sim \operatorname{MVN}(\mathbf{0}, \mathbf{\Sigma}) \\
 \Sigma &= \mathbf{SRS} \\
 \mathbf{S} &= \begin{bmatrix} \sigma_{\beta_0} &0 &0 &0 \\ 0 &\sigma_{\beta_1} &0 &0 \\ 0 &0 &\sigma_{\beta_2} &0 \\ 0 &0 &0 &\sigma_{\beta_3} \end{bmatrix} \\
 \mathbf{R} &= \begin{bmatrix} 1 &\rho_{\beta_0\beta_1} &\rho_{\beta_0\beta_2} &\rho_{\beta_0\beta_3} \\ \rho_{\beta_0\beta_1} &1 &\rho_{\beta_1\beta_2} &\rho_{\beta_1\beta_3} \\ \rho_{\beta_0\beta_2} &\rho_{\beta_1\beta_2} &1 &\rho_{\beta_2\beta_3} \\ \rho_{\beta_0\beta_3} &\rho_{\beta_1\beta_3} &\rho_{\beta_2\beta_3} &1 \end{bmatrix},
@@ -357,7 +359,7 @@ Even if we calculate these percentages correctly, the question of how this infor
 
 We agree that when heterogeneity is considerable, our substantive statements about the population must be qualified by this variation [@bolgerCausalProcessesPsychology2019]. But this is not the same sentiment that drives the argument that we are discussing here. The intent, apparently, is to develop a personalized understanding of social media *effects* for each individual; a truly idiographic goal [@valkenburgSocialMediaUse2021, p.74]. However, to date this goal is approached by extrapolating from inappropriately calculated population-level quantities; in this case percentages of individuals with associations in excess of some critical threshold. This fundamental tension between wants and haves has, we believe, led to a premature consideration of purportedly novel paradigms in a field that has not matured enough either methodologically or theoretically to consider addressing *causal* effects a manner that should attract the limited attention of policymakers and the general public [see e.g. @ijzermanUseCautionWhen2020].
 
-As we have argued [@johannesHowShouldWe2021a], one way to resolve this tension is to use information about heterogeneity in considering meaningful moderators of social media associations [e.g. @bolgerCausalProcessesPsychology2019]. But this is standard practice in psychological research that routinely develops and refines theoretical models by moderating effects and associations with demographic and contextual variables. Another route, we believe espoused by this programme of research, is to move towards an idiographic (person-specific) research paradigm---a topic to which our next objection pertains.
+As we have argued [@johannesHowShouldWe2021a], one way to resolve this tension is to use information about heterogeneity in considering meaningful moderators of social media associations [e.g. @bolgerCausalProcessesPsychology2019]. But this is standard practice in psychological research that routinely develops and refines theoretical models by moderating associations with demographic and contextual variables. Another route, we believe espoused by this programme of research, is to move towards an idiographic (person-specific) research paradigm---a topic to which our next objection pertains.
 
 # Paradigmatic objection
 
