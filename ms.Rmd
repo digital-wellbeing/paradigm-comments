@@ -327,11 +327,12 @@ qoi %>%
   ) %>% 
   select(
     Classification = Association, 
-    `Beyens et al. (2020)` = Authors, 
+    `Orig.` = Authors, 
     `Sample` = Recalculated, 
     `Population` = Percentage
   ) %>% 
   apa_table(
+    span_text_columns = FALSE,
     caption = "Original and recalculated heterogeneity in passive social media use associations from Beyens et al. (2020)"
   )
 ```
