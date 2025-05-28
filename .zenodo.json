@@ -1,0 +1,38 @@
+{
+    "creators": [
+        {
+            "orcid": "0000-0001-5052-066X",
+            "affiliation": "Tilburg University",
+            "name": "Vuorre, Matti"
+        },
+        {
+            "orcid": "0000-0001-6612-2842",
+            "affiliation": "Kroo Bank Ltd",
+            "name": "Johannes, Niklas"
+        },
+        {
+            "orcid": "0000-0001-5547-2185",
+            "affiliation": "University of Oxford",
+            "name": "Przybylski, Andrew K."
+        }
+    ],
+    "license": "cc-by-4.0",
+    "title": "Three objections to a novel paradigm in social media effects research",
+    "related_identifiers": [
+        {
+            "scheme": "doi",
+            "identifier": "10.31234/osf.io/dpuya_v2",
+            "relation": "isSupplementTo",
+            "resource_type": "publication-preprint"
+        }
+    ],
+    "keywords": [
+        "social media",
+        "media effects",
+        "well-being",
+        "variation",
+        "heterogeneity",
+        "paradigm"
+    ],
+    "language": "eng"
+}
