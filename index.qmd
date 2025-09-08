@@ -60,7 +60,9 @@ theme_set(
     theme(panel.grid = element_blank())
 )
 dir.create("models", FALSE)
-if (Sys.getenv("BRMS_BACKEND") == "cmdstanr") library(cmdstanr)
+if (Sys.getenv("BRMS_BACKEND") == "cmdstanr") {
+  library(cmdstanr)
+}
 options(
   brms.backend = Sys.getenv("BRMS_BACKEND", "rstan"),
   brms.threads = as.numeric(Sys.getenv("BRMS_THREADS"), 1),
@@ -111,10 +113,12 @@ dir.create("data", FALSE)
 path <- "data/beyens-et-al-2020.sav"
 if (!file.exists(path)) {
   # Data from figshare
-  download.file(
-    "https://uvaauas.figshare.com/ndownloader/files/24028271",
-    path
+  stop(
+    "Data not found. ",
+    "Place data from Beyens et al. in `data/beyens-et-al-2020.sav`."
   )
+}
+if (!file.exists("data/Analyses.zip")) {
   # Code from OSF
   download.file(
     "https://files.de-1.osf.io/v1/resources/bvfuw/providers/osfstorage/5df9effa64e19d000d0f51da/?zip=",
