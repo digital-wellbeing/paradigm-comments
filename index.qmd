@@ -34,7 +34,6 @@ bibliography: person-specific-paradigm.bib
 format:
   preprint-typst:
     output-file: ms.pdf
-    wordcount: '{{< words-body >}}'
 ---
 
 ```{r}
