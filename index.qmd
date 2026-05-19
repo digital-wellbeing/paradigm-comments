@@ -39,7 +39,6 @@ format:
 ```{r}
 #| label: setup
 #| include: false
-
 library(janitor)
 library(scales)
 library(haven)
@@ -63,9 +62,9 @@ if (Sys.getenv("BRMS_BACKEND") == "cmdstanr") {
   library(cmdstanr)
 }
 options(
-  brms.backend = Sys.getenv("BRMS_BACKEND", "rstan"),
-  brms.threads = as.numeric(Sys.getenv("BRMS_THREADS"), 1),
-  mc.cores = as.numeric(Sys.getenv("MAX_CORES"), 4)
+  brms.backend = Sys.getenv("BRMS_BACKEND", unset = "rstan"),
+  brms.threads = as.numeric(Sys.getenv("BRMS_THREADS", unset = 1)),
+  mc.cores = as.numeric(Sys.getenv("MAX_CORES", unset = 4))
 )
 ```
 
@@ -104,7 +103,6 @@ Because the authors shared their data [@Beyens2021], we were able to reproduce t
 
 ```{r}
 #| label: data-wrangle
-
 # The data is cited in the paper as "The dataset generated and analysed during the current study is available in Figshare." (https://uvaauas.figshare.com/articles/dataset/Dataset_belonging_to_Beyens_et_al_2020_The_effect_of_social_media_on_well-being_differs_from_adolescent_to_adolescent/12497990)
 
 # Download data if not yet downloaded
@@ -174,7 +172,6 @@ d <- d %>%
 #| label: model
 #| cache: false
 #| include: false
-
 # Model with binary predictor
 fit <- brm(
   wb ~ occ + active_c_w + passive_c_w + (occ + active_c_w + passive_c_w | pid),
@@ -223,7 +220,6 @@ The second reason why reporting percentages of person-level parameters is proble
 #| label: fig-caterpillar
 #| fig-height: 4
 #| fig-cap: "Caterpillar plot showing person-specific associations between active (left) and passive (right) social media use (use vs. no use) and affective well-being. Points indicate posterior means and 95% credibility intervals. Dark blue indicates that the parameters' posterior mean was outside of the null region. Filled points indicate person-specific estimates whose credibility interval is wholly outside of the null region. Empty points are undecided. Dashed vertical lines indicate smallest effect sizes of interest as defined by 2% of the outcome scale (0.14)."
-
 x1 <- spread_draws(
   fit,
   b_active_c_w,
@@ -286,7 +282,6 @@ It is important to note that the person-specific estimates shown in @fig-caterpi
 ```{r}
 #| label: tbl-qoi
 #| tbl-cap: Original and recalculated heterogeneity in passive social media use associations from Beyens et al. (2020).
-
 # Calculate QOIs
 qoi <- spread_draws(
   fit,
@@ -349,7 +344,6 @@ Three, there are no inconclusive person-specific parameters in the population, b
 ```{r}
 #| label: compare-stuff
 #| include: false
-
 # Standard deviation of person-specific slopes in the model...
 obs <- sd(coef(fit)$pid[, 1, "passive_c_w"]) %>% number(., .01)
 # ...is much smaller than estimated SD
