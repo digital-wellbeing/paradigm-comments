@@ -5,8 +5,7 @@
 data/
 models/
 index_*/
+/.quarto/
 *.docx
-*.tex
-*.log
 *.pdf
 .Renviron
